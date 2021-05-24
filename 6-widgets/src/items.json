@@ -1,0 +1,14 @@
+[
+  {
+    "title": "What is React?",
+    "content": "React is a Javascript front-end library. It is used to show content to users and handle user events.\nEngineers use React to create reusable components."
+  },
+  {
+    "title": "How do we show content with React?",
+    "content": "Content in React is displayed and controlled through the use of components.\nComponents provide a way to create distinct portions of an application, each of which manages its own view, state, and behaviors."
+  },
+  {
+    "title": "Why is React useful for engineers?",
+    "content": "React is a powerful tool for managing all aspects of a front-end web application.\nEngineers can define the state and behavior of components and let React handle the low-level DOM manipulations, while keeping the entire application synchronized."
+  }
+]

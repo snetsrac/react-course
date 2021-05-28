@@ -1,48 +1,46 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import wikipedia from '../api/wikipedia';
+
+const SEARCH_DELAY_MS = 500;
 
 const Search = () => {
-  const [term, setTerm ] = useState('');
+  const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
-  const search = async (term) => {
-    const response = await axios.get('https://en.wikipedia.org/w/api.php', {
-      params: {
-        action: 'query',
-        list: 'search',
-        format: 'json',
-        srsearch: term,
-        origin: '*'
-      }
-    });
+  useEffect(() => {
+    const timer = setTimeout(() => search(term), SEARCH_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [term]);
 
-    return response.data.query.search;
+  const search = async (term) => {
+    if (term.length === 0) return setResults([]);
+
+    const response = await wikipedia.get('/api.php', { params: { srsearch: term } });
+    setResults(response.data.query.search);
   }
 
-  const onFormSubmit = async (event) => {
-    event.preventDefault();
-    setResults(await search(term));
-  };
-  
-  const onInputChange = (event) => {
-    setTerm(event.target.value);
-  };
 
-  const renderedResults = results.map((result, i) => {
+  const renderedResults = results.map((result) => {
     return (
-      <div key={i} className="ui segment">
-        <h5>{result.title}</h5>
-        <div>{result.snippet.replace(/<[a-zA-Z0-9="/ ]+>/g, '') + '...'}</div>
-      </div>
+      <a
+        key={result.pageid}
+        className="ui fluid link card"
+        href={encodeURI(`https://en.wikipedia.org/wiki/${result.title.replace(/\s/g, '_')}`)}
+      >
+        <div className="content">
+          <div className="header">{result.title}</div>
+          <div className="description">{result.snippet.replace(/<[a-zA-Z0-9="/ ]+>/g, '') + '...'}</div>
+        </div>
+      </a>
     );
   });
 
   return (
     <React.Fragment>
-      <h4>Search</h4>
-      <form className="ui form" onSubmit={onFormSubmit}>
-        <input type="text" value={term} onChange={onInputChange}/>
-      </form>
+      <h4>Search Wikipedia</h4>
+      <div className="ui form" >
+        <input type="text" value={term} onChange={(ev) => setTerm(ev.target.value)}/>
+      </div>
       {renderedResults}
     </React.Fragment>
   );

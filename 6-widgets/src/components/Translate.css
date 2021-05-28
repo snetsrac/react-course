@@ -1,0 +1,20 @@
+.translate {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.translate .ui.divider {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.translate h5.ui.header {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.translate .convert-text {
+  font-size: 3rem;
+  font-weight: 800;
+}

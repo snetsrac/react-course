@@ -5,7 +5,7 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const dropdownRef = useRef(null);
 
   const onBodyClick = (event) => {
-    if (dropdownRef.current.contains(event.target)) return;
+    if (dropdownRef.current?.contains(event.target)) return;
     
     setIsOpen(false);
   };

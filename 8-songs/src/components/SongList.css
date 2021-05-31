@@ -1,0 +1,8 @@
+.song-list .item {
+  display: flex !important;
+  align-items: center;
+}
+
+.song-list .item .content:nth-child(2) {
+  margin-left: auto;
+}

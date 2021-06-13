@@ -1,0 +1,34 @@
+{
+  "streams": [
+    {
+      "userId": "117631509408120741648",
+      "title": "Great Stream",
+      "description": "This is a great stream.",
+      "id": 1
+    },
+    {
+      "userId": "117631509408120741648",
+      "title": "Terrific Stream",
+      "description": "This is a terrific stream!",
+      "id": 2
+    },
+    {
+      "title": "Mediocre Stream",
+      "description": "This is a mediocre stream...",
+      "userId": null,
+      "id": 3
+    },
+    {
+      "title": "Best Stream",
+      "description": "This is the best stream.",
+      "userId": null,
+      "id": 4
+    },
+    {
+      "userId": "117631509408120741648",
+      "title": "Fantastic Stream",
+      "description": "This is truly a fantastic stream!",
+      "id": 5
+    }
+  ]
+}
